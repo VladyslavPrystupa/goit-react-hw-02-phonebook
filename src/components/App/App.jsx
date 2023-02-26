@@ -50,7 +50,7 @@ export class App extends Component {
         <GlobalStyles />
         <Header>Phonebook</Header>
         <ContactForm contacts={contacts} contactsUpd={this.contactsUpd} />
-        {contacts.length !== 0 && (
+        {contacts.length !== 0 ? (
           <>
             <SubHeader>Contacts</SubHeader>
             <Filter filter={filter} onHandleChange={this.handleChange} />
@@ -59,6 +59,8 @@ export class App extends Component {
               onDeleteContact={this.onContactDelete}
             />
           </>
+        ) : (
+          <SubHeader>You have not any contacts</SubHeader>
         )}
       </Container>
     );

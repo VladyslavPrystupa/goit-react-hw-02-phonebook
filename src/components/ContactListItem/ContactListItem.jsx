@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
-
+import { Contact, Button } from './ContactListItem.styled';
 export const ContactListItem = ({ filteredContacts, onDeleteContact }) => {
   return filteredContacts.map(contact => {
     return (
-      <li key={contact.id}>
-        {contact.name} {contact.number}
-        <button type="button" onClick={() => onDeleteContact(contact.id)}>
-          delete
-        </button>
-      </li>
+      <Contact key={contact.id}>
+        {contact.name}: {contact.number}
+        <Button type="button" onClick={() => onDeleteContact(contact.id)}>
+          Delete
+        </Button>
+      </Contact>
     );
   });
 };
