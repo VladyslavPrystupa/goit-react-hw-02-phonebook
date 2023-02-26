@@ -5,6 +5,7 @@ export const Container = styled.div`
 `;
 
 export const Label = styled.label`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -27,4 +28,11 @@ export const Input = styled.input`
   :focus {
     background-color: #87cfdf47;
   }
+`;
+
+export const Icon = styled.div`
+  position: absolute;
+  right: 50%;
+  top: 3px;
+  color: #000000;
 `;
