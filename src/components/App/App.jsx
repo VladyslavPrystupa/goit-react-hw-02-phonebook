@@ -3,7 +3,7 @@ import { GlobalStyles } from '../App/GlobalStyles';
 import { ContactForm } from '../ContactForm/ContactForm';
 import { Filter } from '../Filter/Filter';
 import { ContactList } from '../ContactList/ContactList';
-import { Container, Header } from './App.styled';
+import { Container, Header, SubHeader } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -50,13 +50,16 @@ export class App extends Component {
         <GlobalStyles />
         <Header>Phonebook</Header>
         <ContactForm contacts={contacts} contactsUpd={this.contactsUpd} />
-
-        <h2>Contacts</h2>
-        <Filter filter={filter} onHandleChange={this.handleChange} />
-        <ContactList
-          filteredContacts={filteredContacts}
-          onDeleteContact={this.onContactDelete}
-        />
+        {contacts.length !== 0 && (
+          <>
+            <SubHeader>Contacts</SubHeader>
+            <Filter filter={filter} onHandleChange={this.handleChange} />
+            <ContactList
+              filteredContacts={filteredContacts}
+              onDeleteContact={this.onContactDelete}
+            />
+          </>
+        )}
       </Container>
     );
   }

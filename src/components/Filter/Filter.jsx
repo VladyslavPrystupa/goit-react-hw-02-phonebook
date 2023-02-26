@@ -1,13 +1,17 @@
+import { Label, Input, Container } from './Filter.styled';
+
 export const Filter = ({ onHandleChange, filter }) => {
   return (
-    <label>
-      Find contact
-      <input
-        onChange={onHandleChange}
-        type="text"
-        name="filter"
-        value={filter}
-      />
-    </label>
+    <Container>
+      <Label>
+        Find contact
+        <Input
+          onChange={onHandleChange}
+          type="text"
+          name="filter"
+          value={filter}
+        />
+      </Label>
+    </Container>
   );
 };

@@ -1,14 +1,14 @@
 import { ContactListItem } from '../ContactListItem/ContactListItem';
 import PropTypes from 'prop-types';
-
+import { List } from './ContactList.styled';
 export const ContactList = ({ filteredContacts, onDeleteContact }) => {
   return (
-    <ul>
+    <List>
       <ContactListItem
         filteredContacts={filteredContacts}
         onDeleteContact={onDeleteContact}
       />
-    </ul>
+    </List>
   );
 };
 

@@ -7,7 +7,6 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 8px;
   align-items: center;
-  width: 70%;
   padding: 10px;
 
   border: 1px solid black;
@@ -20,7 +19,7 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   gap: 4px;
-
+  width: 320px;
   font-weight: 600;
   color: coral;
 `;
