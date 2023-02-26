@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import { Contact, Button } from './ContactListItem.styled';
+import { AiOutlineUser } from 'react-icons/ai';
 export const ContactListItem = ({ filteredContacts, onDeleteContact }) => {
   return filteredContacts.map(contact => {
     return (
       <Contact key={contact.id}>
+        <AiOutlineUser />
         {contact.name}: {contact.number}
         <Button type="button" onClick={() => onDeleteContact(contact.id)}>
           Delete
