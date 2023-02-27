@@ -31,3 +31,8 @@ export const Button = styled.button`
     background-color: #88cfed;
   }
 `;
+
+export const ContactName = styled.span`
+  width: 220px;
+  word-wrap: break-word;
+`;
