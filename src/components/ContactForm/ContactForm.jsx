@@ -26,7 +26,7 @@ export class ContactForm extends Component {
       id: nanoid(10),
     };
 
-    const namesOfContacts = contacts.map(contact => contact.name);
+    const namesOfContacts = contacts.map(({ name }) => name);
     if (namesOfContacts.includes(name)) {
       this.reset();
       return Notiflix.Notify.failure('you already have this contact name');

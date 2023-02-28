@@ -7,14 +7,24 @@ import { Container, Header, SubHeader } from './App.styled';
 
 export class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
   };
+
+  componentDidMount() {
+    const parseContacts = JSON.parse(localStorage.getItem('contacts'));
+    if (parseContacts) {
+      this.setState({
+        contacts: parseContacts,
+      });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts.length !== this.state.contacts.length) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
 
   handleChange = evt => {
     const { name, value } = evt.target;
@@ -22,19 +32,22 @@ export class App extends Component {
   };
 
   contactsUpd = newContact => {
-    this.setState(prevState => {
-      return { contacts: [newContact, ...prevState.contacts] };
+    this.setState(({ contacts }) => {
+      return { contacts: [newContact, ...contacts] };
     });
   };
 
   onContactDelete = id => {
-    const indexOfContact = this.state.contacts.findIndex(
-      contact => contact.id === id
-    );
-    this.state.contacts.splice(indexOfContact, 1);
-    this.setState(prevState => {
-      return { contacts: prevState.contacts };
-    });
+    this.setState(({ contacts }) => ({
+      contacts: contacts.filter(contact => contact.id !== id),
+    }));
+    // const indexOfContact = this.state.contacts.findIndex(
+    //   contact => contact.id === id
+    // );
+    // this.state.contacts.splice(indexOfContact, 1);
+    // this.setState(prevState => {
+    //   return { contacts: prevState.contacts };
+    // });
   };
 
   render() {
